@@ -1,0 +1,11 @@
+---
+settings:
+  package_name_format: 'openstack-{{project.name}}-{{version}}'
+  build_type: docker
+  version: '1.0'
+  base_path: '/opt/giftwrap/openstack-{{version}}/'
+
+projects:
+
+  - name: python-glanceclient
+    gitref: master

@@ -1,10 +1,12 @@
-FROM centos:centos6
+FROM centos:centos7
 MAINTAINER Paul Czarkowski
 
 VOLUME /pkg
 
-RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-RUN yum install -y centos-release-SCL
+RUN rpm -ivh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm && \
+        rpm --import http://mirror.pnl.gov/epel/RPM-GPG-KEY-EPEL-7 && \
+        yum makecache && \
+        rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 RUN yum install -y \
     git \
@@ -23,8 +25,8 @@ RUN yum install -y \
     postgresql-libs postgresql-devel && \
     yum clean all
 
-RUN git config --global user.email "packager@myco" && \
-    git config --global user.name "Omnibus Packager"
+RUN git config --global user.email "factory@giftwrap" && \
+    git config --global user.name "Giftwrapper"
 
 RUN gem install fpm --no-ri --no-rdoc
 
