@@ -6,3 +6,5 @@
 **/pkg/*.json
 **/pkg/*.deb
 **/pkg/*rpm
+
+.vagrant
